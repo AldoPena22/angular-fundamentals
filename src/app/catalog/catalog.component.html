@@ -19,8 +19,8 @@
           </div>
         </div>
         <div class="price">
-          <div *ngIf="product.discount === 0">{{ product?.price | currency: 'MXN'}}</div>
-          <div *ngIf="product.discount > 0" class="discount">Now: {{ (product.price * (1 - product.discount)) | currency: 'MXN'}}!</div>
+          <div [ngClass]="{strikethrough: product.discount > 0}" >{{ product?.price | currency: 'USD'}}</div>
+          <div *ngIf="product.discount > 0" class="discount">Now: {{ (product.price * (1 - product.discount)) | currency: 'USD'}}!</div>
           <button class="cta">Buy</button>
         </div>
          
