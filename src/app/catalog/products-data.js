@@ -1,17 +1,4 @@
-import { Component } from '@angular/core';
-import { IProduct } from './product.model';
-
-@Component({
-  selector: 'anf-catalog',
-  templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.css']
-})
-export class CatalogComponent {
- products: IProduct[];
- filter: string = '';
-
- constructor() {
-   this.products = [
+let products = [
   {
     id: 1,
     description:
@@ -186,19 +173,3 @@ export class CatalogComponent {
     discount: 0,
   },
 ];
-}
-
-getImageUrl(product: IProduct): string {
-   return 'assets/images/robot-parts/' + product.imageName;
- };
-
-getFilteredProducts(): IProduct[] { 
-   return this.filter === ''
-     ? this.products
-     : this.products.filter((p) =>
-         p.category.toLowerCase() === this.filter.toLowerCase()
-       );
-   
- };
-
-}
