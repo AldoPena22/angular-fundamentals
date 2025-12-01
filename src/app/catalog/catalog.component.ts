@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IProduct } from './product.model';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'anf-catalog',
@@ -10,7 +11,8 @@ export class CatalogComponent {
  products: IProduct[];
  filter: string = '';
 
- constructor() {
+
+ constructor( private carSVC : CartService) {
    this.products = [
   {
     id: 1,
@@ -201,4 +203,8 @@ getFilteredProducts(): IProduct[] {
    
  };
 
+
+  addToCart(product: IProduct): void {
+    this.carSVC.add(product);
+  }
 }

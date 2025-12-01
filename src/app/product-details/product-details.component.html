@@ -1,0 +1,16 @@
+  <div class="product">
+        <div class="product-details">
+          <img [src]="'/assets/images/robot-parts/' + productDetails?.imageName" [alt]="productDetails.name" />
+          <div class="product-info">
+            <div class="name"> {{ productDetails?.name }}</div>
+            <div class="description">{{ productDetails?.description }}</div>
+            <div class="category">Part Type: {{ productDetails.category }}</div>
+          </div>
+        </div>
+        <div class="price">
+          <div [ngClass]="{strikethrough: productDetails.discount > 0}" >{{ productDetails?.price | currency: 'USD'}}</div>
+          <div *ngIf="productDetails.discount > 0" class="discount">Now: {{ (productDetails.price * (1 - productDetails.discount)) | currency: 'USD'}}!</div>
+          <button class="cta" (click)="buyButtonClicked(productDetails)">Buy</button>
+        </div>
+         
+    </div>
